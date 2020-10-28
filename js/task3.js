@@ -12,7 +12,9 @@ class CountdownTimer {
 
   timer = setInterval(() => {
     const time = this.targetDate - Date.now();
-    this.updateClockface(time);
+    if (time <= 0) {
+      clearInterval(timer)
+    } else {this.updateClockface(time)};
   }, 1000);
 
   updateClockface(time) {
